@@ -71,3 +71,15 @@ class CustomerReview(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class FeaturedProduct(models.Model):
+    name = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='media')
+    price = models.IntegerField()
+
+
+class RecentProduct(models.Model):
+    name = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='media')
+    price = models.IntegerField()
