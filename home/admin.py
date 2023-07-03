@@ -7,7 +7,6 @@ admin.site.register(Ad)
 admin.site.register(Brand)
 admin.site.register(Product)
 admin.site.register(CustomerReview)
-admin.site.register(FeaturedProduct)
-admin.site.register(RecentProduct)
+
 # Register your models here.
 
