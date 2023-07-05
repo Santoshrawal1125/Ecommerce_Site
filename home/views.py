@@ -26,4 +26,6 @@ class CategoryView(Base):
     def get(self, request, slug):
         cat_id = Category.objects.get(slug=slug).id
         self.views['cat_products'] = Product.objects.filter(category_id=cat_id)
+        self.views['categories'] = Category.objects.all()
+        self.views['sales'] = Product.objects.filter(labels='sale')
         return render(request, 'category.html', self.views)
