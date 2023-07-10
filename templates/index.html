@@ -19,21 +19,20 @@
                     </div>
                     <div class="col-md-6">
                         <div class="header-slider normal-slider">
-
-                            {% for slider in sliders%}
+                            {% for slider in sliders %}
                             <div class="header-slider-item">
-                                <img src="{{slider.image.url}}"  alt="Slider Image" />
+                                <img src="{{slider.image.url}}" alt="Slider Image" />
                                 <div class="header-slider-caption">
-                                    <p>Background image </p>
+                                    <p>{{slider.description}}</p>
                                     <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
                             {% endfor %}
+
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="header-img">
-
                             {% for ad in ads %}
                             {% if ad.rank == 1 %}
                             <div class="img-item">
@@ -44,8 +43,7 @@
                             </div>
                             {% endif %}
                             {% endfor %}
-
-                            {% for ad in ads %}
+                             {% for ad in ads %}
                             {% if ad.rank == 2 %}
                             <div class="img-item">
                                 <img src="{{ad.image.url}}" />
@@ -55,7 +53,6 @@
                             </div>
                             {% endif %}
                             {% endfor %}
-
                         </div>
                     </div>
                 </div>
@@ -68,12 +65,12 @@
             <div class="container-fluid">
                 <div class="brand-slider">
                     {% for brand in brands %}
-                    <div class="brand-item"><img src="{{brand.image.url}}" style = "height= 300px; width:300px" alt=""></div>
+                    <a href = "/brand/{{brand.slug}}"><div class="brand-item"><img src="{{brand.image.url}}" style = "height: 50px; width: 50px;" alt=""></div></a>
                     {% endfor %}
+
                 </div>
             </div>
         </div>
-
         <!-- Brand End -->
 
         <!-- Feature Start-->
@@ -125,80 +122,49 @@
         <div class="category">
             <div class="container-fluid">
                 <div class="row">
-
                     <div class="col-md-3">
-                        {% for ad in ads %}
-                        {% if ad.rank == 3 %}
                         <div class="category-item ch-400">
-                            <img src="{{ad.image.url}}" />
+                            <img src="img/category-3.jpg" />
                             <a class="category-name" href="">
-                                <p>{{ad.description}}</p>
+                                <p>Some text goes here that describes the image</p>
                             </a>
                         </div>
-                        {%  endif %}
-                        {%  endfor %}
                     </div>
                     <div class="col-md-3">
-
-                        {% for ad in ads %}
-                        {% if ad.rank == 4 %}
                         <div class="category-item ch-250">
-                            <img src="{{ad.image.url}}" />
+                            <img src="img/category-4.jpg" />
                             <a class="category-name" href="">
-                                <p>{{ad.description}}</p>
+                                <p>Some text goes here that describes the image</p>
                             </a>
                         </div>
-                        {% endif %}
-                        {% endfor %}
-
-                        {% for ad in ads %}
-                        {% if ad.rank == 5 %}
                         <div class="category-item ch-150">
-                            <img src="{{ad.image.url}}" />
+                            <img src="img/category-5.jpg" />
                             <a class="category-name" href="">
-                                <p>{{ad.description}}</p>
+                                <p>Some text goes here that describes the image</p>
                             </a>
                         </div>
-                        {% endif %}
-                        {% endfor %}
                     </div>
-
                     <div class="col-md-3">
-
-                        {% for ad in ads %}
-                        {% if ad.rank == 6 %}
                         <div class="category-item ch-150">
-                            <img src="{{ad.image.url}}" />
+                            <img src="img/category-6.jpg" />
                             <a class="category-name" href="">
-                                <p>{{ad.description}}</p>
+                                <p>Some text goes here that describes the image</p>
                             </a>
                         </div>
-                        {% endif %}
-                        {% endfor %}
-
-
-                        {% for ad in ads %}
-                        {% if ad.rank == 7 %}
                         <div class="category-item ch-250">
-                            <img src="{{ad.image.url}}" />
+                            <img src="img/category-7.jpg" />
                             <a class="category-name" href="">
-                                <p>{{ad.description}}</p>
+                                <p>Some text goes here that describes the image</p>
                             </a>
                         </div>
-                        {% endif %}
-                        {% endfor %}
                     </div>
                     <div class="col-md-3">
-                        {% for ad in ads %}
-                        {% if ad.rank == 8 %}
                         <div class="category-item ch-400">
-                            <img src="{{ad.image.url}}" />
+                            <img src="img/category-8.jpg" />
                             <a class="category-name" href="">
-                                <p>{{ad.description}}</p>
+                                <p>Some text goes here that describes the image</p>
                             </a>
                         </div>
-                        {% endif %}
-                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -231,7 +197,7 @@
                     <div class="col-lg-3">
                         <div class="product-item">
                             <div class="product-title">
-                                <a href="#">{{hot.name}}</a>
+                                <a href="/product/{{hot.slug}}">{{hot.name}}</a>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -252,10 +218,9 @@
                             </div>
                             <div class="product-price">
                                 {% if hot.discounted_price > 0 %}
-                                <h3><span>$</span>{{hot.discounted_price}}</h3>
+                                <h3><span>Rs. </span>{{hot.discounted_price}}</h3>
                                 {% else %}
-                                 <h3><span>$</span>{{hot.price}}</h3>
-
+                                <h3><span>Rs. </span>{{hot.price}}</h3>
                                 {% endif %}
                                 <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
@@ -292,11 +257,11 @@
                     <h1>Recent Product</h1>
                 </div>
                 <div class="row align-items-center product-slider product-slider-4">
-                    {% for new in news %}
+                    {% for  new in news %}
                     <div class="col-lg-3">
                         <div class="product-item">
                             <div class="product-title">
-                                <a href="#">{{new.name}}</a>
+                                <a href="/product/{{new.slug}}">{{new.name}}</a>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -316,16 +281,16 @@
                                 </div>
                             </div>
                             <div class="product-price">
-                                {% if hot.discounted_price > 0 %}
-                                <h3><span>$</span>{{hot.discounted_price}}</h3>
+                                {% if new.discounted_price > 0 %}
+                                <h3><span>Rs. </span>{{new.discounted_price}}</h3>
                                 {% else %}
-                                 <h3><span>$</span>{{hot.price}}</h3>
+                                <h3><span>$</span>{{new.price}}</h3>
                                 {% endif %}
                                 <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
                     </div>
-                    {%  endfor %}
+                   {% endfor %}
                 </div>
             </div>
         </div>
@@ -335,7 +300,6 @@
         <div class="review">
             <div class="container-fluid">
                 <div class="row align-items-center review-slider normal-slider">
-
 
                     {% for review in reviews %}
                     <div class="col-md-6">
@@ -359,8 +323,7 @@
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
-  n
+                   {% endfor %}
 
                 </div>
             </div>
